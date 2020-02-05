@@ -8,28 +8,49 @@ print("Welcome to my Rock-Paper-Scissors game...")
 print("-------------------")
 
 #Processing  user inputs.
-#Validating user imputs.
-#Simulating computer selection
-#Determining the winner
-#Displaying results
+x = input("Please choose either 'rock', 'paper', or 'scissors':  ")
+print(f"You chose: " + str(x))
 
-user_input = input("Please choose either 'rock', 'paper', or 'scissors': ")
-if user_input == "rock":
-    print("You chose: 'rock' ")
-elif user_input == "paper":
-    print("You chose: 'paper' ")
-elif user_input == "scissors":     
-    print("You chose: 'scissors' ")
+#Validating user imputs.
+user_choice = ["rock", "paper", "scissors"]
+if x in user_choice:
+    print("VALID")
 else:
+    print("INVALID")
     exit()
 
-pc_options = ['rock,' 'paper,' 'scissors']
-random.choices(pc_options)
-print(f"The computer chose: " + str(pc_options) + "!")
+#Simulating computer selection
 
-print("-------------------")
-print("Oh, ")
-print("-------------------")
+pc_choice = random.choices(user_choice)
+pc_choice = ",".join(pc_choice) #Use ",".join(variable) to convert a list item to a string
+print(f"The computer chose: " + str(pc_choice) + "!")
+
+#Determining the winner
+pc_choice = pc_choice.lower()
+x = x.lower()
+
+print(pc_choice)
+print(x)
+
+#Displaying results
+if pc_choice == x:
+    print("TIE")
+elif pc_choice == "rock":
+    if x == "scissors":
+        print("You lose. Play again!")
+    elif x == "paper":
+        print("You win. Play again")
+elif pc_choice.lower() == "paper":
+    if x == "rock":
+        print("You lose. Play again!")
+    elif x == "scissors":
+        print("You win. Play again")
+elif pc_choice == "scissors":
+    if x == "paper":
+        print("You lose. Play again!")
+    elif x == "rock":
+        print("You win. Play again")
+    
 print("Thanks for playing. Pleae play again!")
 
 
